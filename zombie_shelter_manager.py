@@ -7,6 +7,7 @@ with open("shelter.json", "r") as file:
     data = json.load(file)
 
 def print_log():
+    '''This function prints out the shelter's records.'''
     skip_items = ["radio_working"]
     for key, value in data.items():
         if key in skip_items:
@@ -18,6 +19,7 @@ def print_log():
         print("Radio : Not Working")
     
 def new_str(userin):
+    '''This function replaces a chosen string in the log with user input.'''
     old = data[userin]
     newstr = input("Enter the new value: ")
     while newstr.isdigit() == True or newstr.strip() == "":
@@ -28,6 +30,7 @@ def new_str(userin):
         file.write(f"{time_stamp}| {userin} changed from {old} to {newstr}\n")
 
 def new_num(userin):
+    '''This function replaces a chosen number in the log with user input.'''
     old = data[userin]
     num = input("Enter the new value: ")
     while num.isdigit() == False or num.strip() == "" or int(num) < 0:
@@ -38,6 +41,7 @@ def new_num(userin):
         file.write(f"{time_stamp}| {userin} changed from {old} to {num}\n")
         
 def new_num_under_100(userin):
+    '''This function replaces a chosen number in the log with user input.'''
     old = data[userin]
     num = input("Enter the new value: ")
     while num.isdigit() == False or num.strip() == "" or int(num) <0 or int(num) >100:
@@ -48,6 +52,7 @@ def new_num_under_100(userin):
         file.write(f"{time_stamp}| {userin} changed from {old} to {num}\n")
 
 def new_bool(userin):
+    '''This function replaces a boolean chosen by the user.'''
     old = data[userin]
     x = input("Enter the new value (y/n): ")
     if x.lower == "y":
@@ -65,6 +70,7 @@ def new_bool(userin):
         file.write(f"{time_stamp}| Radio changed from {old} to {new}\n")
 
 def change_value():
+    '''This function gets what input from the user to see what will be changed'''
     userin = input("Enter the value you'd like to change: ")
     while userin.isdigit == True or userin.strip() == "":
         print("Invalid. (Enter the name of the value. Check underscores!)")
@@ -84,6 +90,7 @@ def change_value():
             file.write(f"{time_stamp} | nothing changed\n")
 
 def view_changes():
+    '''This function prints out the change log'''
     with open("shelter_change.txt", "r") as file:
         content = file.read()
     print(content)
